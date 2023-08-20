@@ -20,4 +20,5 @@ export class HeaderComponent {
       screenfull.toggle();
     }
   }
+  
 }

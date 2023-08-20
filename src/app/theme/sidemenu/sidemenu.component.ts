@@ -15,5 +15,8 @@ export class SidemenuComponent {
 
   buildRoute = this.menu.buildRoute;
 
-  constructor(private menu: MenuService) {}
+  constructor(private menu: MenuService) {
+    console.log(this.menu$);
+
+  }
 }

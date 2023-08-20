@@ -21,7 +21,7 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.post<any>('/auth/logout', {});
+    return this.http.post<any>(api_urls.public_auth_logout, {});
   }
 
   me() {

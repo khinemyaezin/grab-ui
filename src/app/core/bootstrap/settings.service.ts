@@ -7,7 +7,7 @@ import { LocalStorageService } from 'src/app/shared/services/storage.service';
   providedIn: 'root',
 })
 export class SettingsService {
-  private key = 'ng-grabui-settings';
+  private key = 'grabui-settings';
 
   private options: AppSettings;
 

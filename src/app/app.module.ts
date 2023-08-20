@@ -11,6 +11,12 @@ import { ThemeModule } from './theme/theme.module';
 import { httpInterceptorProviders } from './core/interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { appInitializerProviders } from './core/initializers';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function TranslateHttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -25,6 +31,13 @@ import { appInitializerProviders } from './core/initializers';
     SharedModule,
     ThemeModule,
     NgxPermissionsModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: TranslateHttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     httpInterceptorProviders,

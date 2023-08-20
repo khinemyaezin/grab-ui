@@ -14,6 +14,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { NavAccordionDirective } from './sidemenu/nav-accordion.directive';
 import { NavAccordionItemDirective } from './sidemenu/nav-accordion-item.directive';
 import { NavAccordionToggleDirective } from './sidemenu/nav-accordion-toggle.directive';
+import { CustomizerComponent } from './customizer/customizer.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NavAccordionToggleDirective } from './sidemenu/nav-accordion-toggle.dir
     NavAccordionDirective,
     NavAccordionItemDirective,
     NavAccordionToggleDirective,
+    CustomizerComponent,
   ],
   imports: [SharedModule],
 })

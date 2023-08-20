@@ -1,13 +1,13 @@
 <div class="d-flex w-full h-full">
   <mat-card class="m-auto" style="max-width: 380px;">
     <mat-card-header class="m-b-24">
-      <mat-card-title>{{'login_title' }}!</mat-card-title>
+      <mat-card-title>{{'login_title' | translate}}!</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
       <form class="form-field-full" [formGroup]="loginForm">
         <mat-form-field appearance="outline">
-          <mat-label>{{'username' }}: ng-matero</mat-label>
+          <mat-label>{{'username' }}</mat-label>
           <input matInput placeholder="ng-matero" formControlName="username" required>
           <!-- <mat-error *ngIf="username.invalid">
             <span *ngIf="username.errors?.required">{{'please_enter' }}
@@ -18,7 +18,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>{{'password' }}: ng-matero</mat-label>
+          <mat-label>{{'password' | translate}}</mat-label>
           <input matInput placeholder="ng-matero" type="password"
                  formControlName="password" required>
           <!-- <mat-error *ngIf="password.invalid">
@@ -29,15 +29,15 @@
           </mat-error> -->
         </mat-form-field>
 
-        <mat-checkbox formControlName="rememberMe">{{'remember_me' }}
+        <mat-checkbox formControlName="rememberMe">{{'remember_me' | translate}}
         </mat-checkbox>
 
         <button class="w-full m-y-16" mat-raised-button color="primary"
-                [disabled]="!!loginForm.invalid" 
-                (click)="login()">{{'login' }}</button>
+                [disabled]="!!loginForm.invalid"
+                (click)="login()">{{'login' | translate}}</button>
 
-        <div>{{'have_no_account' }}?
-          <a routerLink="/auth/register">{{'create_one_account' }}</a>
+        <div>{{'have_no_account' | translate}}?
+          <a routerLink="/auth/register">{{'create_one_account' | translate}}</a>
         </div>
       </form>
     </mat-card-content>
