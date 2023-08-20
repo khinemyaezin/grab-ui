@@ -8,6 +8,9 @@ import { LoginComponent } from './routes/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ThemeModule } from './theme/theme.module';
+import { httpInterceptorProviders } from './core/interceptor';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { appInitializerProviders } from './core/initializers';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,13 @@ import { ThemeModule } from './theme/theme.module';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    ThemeModule
+    ThemeModule,
+    NgxPermissionsModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders,
+    appInitializerProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

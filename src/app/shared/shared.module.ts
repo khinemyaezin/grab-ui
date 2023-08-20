@@ -6,6 +6,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MaterialModule } from '../material.module';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { ErrorCodeComponent } from './components/error-code/error-code.component';
 
 
 const MODULES: any[] = [
@@ -16,7 +19,7 @@ const MODULES: any[] = [
   DragDropModule,
   MaterialModule,
 ];
-const COMPONENTS: any[] = [];
+const COMPONENTS: any[] = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC: any[] = [];
 const DIRECTIVES: any[] = [];
 const PIPES: any[] = [];

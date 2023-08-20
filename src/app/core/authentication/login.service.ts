@@ -4,6 +4,7 @@ import { Token, User } from './interface';
 import { map } from 'rxjs/operators';
 import { Menu } from '../bootstrap/menu.service';
 import { api_urls } from 'src/app/api.urls';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,10 +25,17 @@ export class LoginService {
   }
 
   me() {
-    return this.http.get<User>('/me');
+    let user:User = {
+      id: '1',
+      name: 'Khine Myae Zin',
+      email: 'khinemyaezin@gmail.com',
+      permissions: ['canRead']
+    }
+    return of(user);
+    //return this.http.get<User>('/me');
   }
 
   menu() {
-    return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
+    return this.http.get<{ menu: Menu[] }>('assets/data/menu.json').pipe(map(res => res.menu));
   }
 }

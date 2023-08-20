@@ -1,6 +1,6 @@
 # Authentication
 
-1. Modify the token key at `token.service` to another name such as `TOKEN` or `your-app-token`. By default set to `ng-matero-token`.
+1. Modify the token key at `token.service` to another name such as `TOKEN` or `your-app-token`. By default set to `ng-grabui-token`.
 
 2. Replace the APIs at `login.service` with your owns.
 

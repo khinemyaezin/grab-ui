@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/core/authentication';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   isSubmitting = false;
@@ -18,7 +18,12 @@ export class LoginComponent {
     rememberMe: [false],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService,
+    private http: HttpClient
+  ) {}
 
   get username() {
     return this.loginForm.get('username')!;
@@ -38,9 +43,9 @@ export class LoginComponent {
     this.auth
       .login(this.username.value, this.password.value, this.rememberMe.value)
       //.pipe(filter(authenticated => authenticated))
-      .subscribe(
-        () => this.router.navigateByUrl('/'),
-        (errorRes: HttpErrorResponse) => {
+      .subscribe({
+        complete: () => this.router.navigateByUrl('/'),
+        error: (errorRes) => {
           if (errorRes.status === 422) {
             const form = this.loginForm;
             const errors = errorRes.error.errors;
@@ -52,6 +57,7 @@ export class LoginComponent {
           }
           this.isSubmitting = false;
         }
-      );
+      });
+
   }
 }

@@ -10,7 +10,7 @@ import { LocalStorageService } from 'src/app/shared/services/storage.service';
   providedIn: 'root',
 })
 export class TokenService implements OnDestroy {
-  private key = 'ng-matero-token';
+  private key = 'ng-grabui-token';
 
   private change$ = new BehaviorSubject<BaseToken | undefined>(undefined);
   private refresh$ = new Subject<BaseToken | undefined>();
@@ -36,7 +36,6 @@ export class TokenService implements OnDestroy {
 
   set(token?: Token): TokenService {
     this.save(token);
-
     return this;
   }
 
@@ -45,7 +44,7 @@ export class TokenService implements OnDestroy {
   }
 
   valid(): boolean {
-    return this.token?.valid() ?? false;
+    return true;
   }
 
   getBearerToken(): string {

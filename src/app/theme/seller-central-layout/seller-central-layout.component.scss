@@ -1,0 +1,160 @@
+@use '@angular/material' as mat;
+@use '../style/variables';
+@use '../style/transitions';
+@use '../style/breakpoints';
+
+.grabui-container-wrap,
+.grabui-container {
+  height: 100%;
+}
+
+.grabui-content {
+  position: relative;
+  padding: variables.$gutter;
+}
+
+.grabui-sidenav {
+  position: absolute;
+  overflow-x: hidden;
+  transition: transitions.swift-ease-out(width); // Only set width property
+
+  @include mat.elevation(2);
+
+  &.mat-drawer-side {
+    border-width: 0;
+
+    [dir='rtl'] & {
+      border-width: 0;
+    }
+  }
+}
+
+// Layout control
+.grabui-header-above {
+  .grabui-container {
+    height: calc(100% - #{variables.$toolbar-height-desktop}) !important;
+  }
+
+  .grabui-sidebar-main {
+    height: 100% !important;
+  }
+}
+
+// Layout control
+.grabui-sidenav-collapsed,
+.grabui-sidenav-collapsed-fix {
+  .grabui-sidenav {
+    width: variables.$sidenav-collapsed-width;
+
+    .menu-name,
+    .menu-label,
+    .menu-badge,
+    .menu-caret,
+    .grabui-user-panel-name,
+    .grabui-user-panel-email,
+    .grabui-user-panel-icons {
+      opacity: 0;
+    }
+
+    .grabui-user-panel-avatar {
+      transform: scale(.5);
+    }
+
+    &:hover {
+      width: variables.$sidenav-width;
+
+      .menu-name,
+      .menu-label,
+      .menu-badge,
+      .menu-caret,
+      .grabui-user-panel-name,
+      .grabui-user-panel-email,
+      .grabui-user-panel-icons {
+        opacity: 1;
+      }
+
+      .grabui-user-panel-avatar {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+// Layout control
+.grabui-sidenav-collapsed {
+  .grabui-content-wrap {
+    margin-left: variables.$sidenav-collapsed-width !important;
+
+    [dir='rtl'] & {
+      margin-right: variables.$sidenav-collapsed-width !important;
+      margin-left: auto !important;
+    }
+  }
+
+  &[dir='rtl'] .grabui-content-wrap {
+    margin-right: variables.$sidenav-collapsed-width !important;
+    margin-left: auto !important;
+  }
+}
+
+// Layout control
+.grabui-navbar-top {
+  .grabui-topmenu {
+    top: 0;
+  }
+
+  .grabui-branding {
+    margin-left: 16px;
+
+    [dir='rtl'] & {
+      margin-right: 16px;
+      margin-left: auto;
+    }
+  }
+}
+
+// Layout control
+.grabui-header-fixed {
+  .grabui-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .grabui-topmenu {
+    top: variables.$topmenu-sticky-position-desktop;
+
+    @include breakpoints.bp-lt(small) {
+      & {
+        top: variables.$topmenu-sticky-position-mobile;
+      }
+    }
+  }
+
+  &.grabui-navbar-side {
+    .grabui-toolbar {
+      border-bottom: unset;
+
+      @include mat.elevation(2);
+    }
+  }
+}
+
+// Fix the init content width
+.grabui-content-width-fix {
+  .grabui-content-wrap {
+    margin-left: variables.$sidenav-width !important;
+
+    [dir='rtl'] & {
+      margin-right: variables.$sidenav-width !important;
+      margin-left: auto !important;
+    }
+  }
+}
+
+// Colorful
+.grabui-header-white {
+  .grabui-toolbar,
+  .grabui-topmenu {
+    background-color: white;
+  }
+}
